@@ -1,8 +1,13 @@
 import type { Author } from "./author.types";
+import type { Category } from "./category.types";
+import type { SanityBlockContent } from "./root.types";
 
 export type Post = {
+    _type: "post";
     title: string;
     slug: string;
     publishedAt?: string;
     author?: Author;
+    body?: SanityBlockContent;
+    categories?: Category[];
 }

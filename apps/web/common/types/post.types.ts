@@ -1,6 +1,6 @@
 import type { Author } from "./author.types";
 import type { Category } from "./category.types";
-import type { SanityBlockContent } from "./root.types";
+import type { SanityBlockContent, SanityImage } from "./root.types";
 
 export type Post = {
     _type: "post";
@@ -10,4 +10,5 @@ export type Post = {
     author?: Author;
     body?: SanityBlockContent;
     categories?: Category[];
+    mainImage?: SanityImage;
 }

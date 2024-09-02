@@ -14,7 +14,9 @@
 			"@lib/*": ["./common/lib/*"],
 			"@styles/*": ["./common/styles/*"],
 			"@utils/*": ["./common/utils/*"]
-		}
+		},
+
+		"target": "ES2017"
 	},
 	"include": [
 		"next-env.d.ts",

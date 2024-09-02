@@ -1,7 +1,7 @@
 "use client";
 
+import PortableText from "@common/components/blocks/PortableText";
 import type { Post } from "@common/types/post.types";
-import { PortableText } from "@portabletext/react";
 
 export default function PostView({ body, title }: Post) {
 	return (
@@ -10,7 +10,7 @@ export default function PostView({ body, title }: Post) {
 				{title}
 			</h1>
 			<div className="portabletext">
-				<PortableText value={body} />
+				<PortableText value={body ?? []} />
 			</div>
 		</div>
 	);

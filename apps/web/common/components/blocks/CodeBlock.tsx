@@ -1,4 +1,3 @@
-import { CodeBlock as RCCodeBlock, github } from "react-code-blocks";
 import { Refractor, registerLanguage } from "react-refractor";
 import js from "refractor/lang/javascript";
 import ts from "refractor/lang/typescript";

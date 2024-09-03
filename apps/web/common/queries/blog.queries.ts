@@ -11,4 +11,4 @@ export const POST_QUERY_RAW = groq`{
 
 export const POST_BY_SLUG_QUERY = groq`*[_type == "post" && slug.current == $slug][0]${POST_QUERY_RAW}`;
 
-export const POSTS_QUERY = groq`*[_type == "post"]${POST_QUERY_RAW}`;
+export const POSTS_QUERY = groq`*[_type == "post" && publishedAt < now()] | order(publishedAt desc) ${POST_QUERY_RAW}`;

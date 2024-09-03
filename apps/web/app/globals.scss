@@ -90,8 +90,8 @@
     @apply leading-7 [&:not(:first-child)]:mt-6;
   }
 
-  code {
-    @apply bg-muted text-foreground px-1 py-0.5 rounded-sm;
+  .code-tag {
+    @apply bg-muted text-foreground px-1 py-0.5 border rounded-sm;
   }
 
 }

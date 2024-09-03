@@ -13,6 +13,11 @@ export default function PortableText({ value }: { value: SanityBlockContent }) {
 						return <CodeBlock {...value} />;
 					},
 				},
+				marks: {
+					code: ({ children }: { children: React.ReactNode }) => {
+						return <code className="code-tag">{children}</code>;
+					},
+				},
 			}}
 		/>
 	);

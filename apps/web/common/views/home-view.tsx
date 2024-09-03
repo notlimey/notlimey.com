@@ -1,22 +1,10 @@
 "use client";
+import PostCard from "@common/components/cards/post-card";
+import WebsiteCard from "@common/components/cards/website-card";
 import { Badge } from "@common/components/ui/badge";
 import type { Homepage } from "@common/types/homepage.types";
-import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@components/ui/card";
 import Link from "next/link";
 import { urlFor } from "../../sanity/lib/image";
-import { toPlainText } from "next-sanity";
-import {
-	Avatar,
-	AvatarFallback,
-	AvatarImage,
-} from "@common/components/ui/avatar";
-import PostCard from "@common/components/cards/post-card";
 
 export default function HomeView({ homepage }: { homepage: Homepage }) {
 	return (
@@ -74,63 +62,9 @@ export default function HomeView({ homepage }: { homepage: Homepage }) {
 							Other Websites to Visit
 						</h2>
 						<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-							<Card>
-								<CardContent className="p-4">
-									<h3 className="text-lg font-semibold">Vercel</h3>
-									<p className="text-muted-foreground">
-										Vercel is a platform for frontend frameworks and static
-										sites, built to integrate with your headless content,
-										commerce, or database.
-									</p>
-									<div className="mt-4">
-										<Link
-											href="#"
-											className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-											prefetch={false}
-										>
-											Visit Vercel
-										</Link>
-									</div>
-								</CardContent>
-							</Card>
-							<Card>
-								<CardContent className="p-4">
-									<h3 className="text-lg font-semibold">Tailwind CSS</h3>
-									<p className="text-muted-foreground">
-										Tailwind CSS is a utility-first CSS framework packed with
-										classes like flex, pt-4, text-center and rotate-90 that can
-										be composed to build any design, directly in your markup.
-									</p>
-									<div className="mt-4">
-										<Link
-											href="#"
-											className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-											prefetch={false}
-										>
-											Visit Tailwind CSS
-										</Link>
-									</div>
-								</CardContent>
-							</Card>
-							<Card>
-								<CardContent className="p-4">
-									<h3 className="text-lg font-semibold">Shadcn/UI</h3>
-									<p className="text-muted-foreground">
-										Shadcn/UI is a set of accessible, customizable, and
-										production-ready components for building high-quality,
-										accessible React applications.
-									</p>
-									<div className="mt-4">
-										<Link
-											href="#"
-											className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-											prefetch={false}
-										>
-											Visit Shadcn/UI
-										</Link>
-									</div>
-								</CardContent>
-							</Card>
+							{homepage.otherWebsites.map((website) => (
+								<WebsiteCard key={website.url} website={website} />
+							))}
 						</div>
 					</div>
 				</div>

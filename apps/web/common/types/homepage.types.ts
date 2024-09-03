@@ -11,7 +11,7 @@ export type Homepage = {
     };
     otherWebsitesTitle: string;
     otherWebsites: {
-        title: string;
+        name: string;
         description: string;
         url: string;
     }[];

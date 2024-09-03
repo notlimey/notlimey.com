@@ -13,7 +13,8 @@
 			"@hooks/*": ["./common/hooks/*"],
 			"@lib/*": ["./common/lib/*"],
 			"@styles/*": ["./common/styles/*"],
-			"@utils/*": ["./common/utils/*"]
+			"@utils/*": ["./common/utils/*"],
+			"@views/*": ["./common/views/*"]
 		},
 
 		"target": "ES2017"

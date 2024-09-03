@@ -4,6 +4,7 @@ import type { SanityBlockContent, SanityImage } from "./root.types";
 
 export type Post = {
     _type: "post";
+    _id: string;
     title: string;
     slug: string;
     publishedAt?: string;

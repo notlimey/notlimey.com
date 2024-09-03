@@ -1,9 +1,24 @@
 "use client";
 import { Badge } from "@common/components/ui/badge";
-import { Card, CardContent } from "@components/ui/card";
+import type { Homepage } from "@common/types/homepage.types";
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@components/ui/card";
 import Link from "next/link";
+import { urlFor } from "../../sanity/lib/image";
+import { toPlainText } from "next-sanity";
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+} from "@common/components/ui/avatar";
+import PostCard from "@common/components/cards/post-card";
 
-export default function HomeView() {
+export default function HomeView({ homepage }: { homepage: Homepage }) {
 	return (
 		<div className="mx-auto max-w-[1240px] py-12 lg:py-24 flex flex-col gap-12 ">
 			<section className="w-full">
@@ -12,7 +27,7 @@ export default function HomeView() {
 						<div className="flex flex-col justify-center space-y-4">
 							<div className="space-y-2">
 								<h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-									Martin Kulvedrøsten Myhre
+									{homepage.hero.title}
 								</h1>
 								<div className="flex gap-2 pb-4 pt-2">
 									<Badge>Software Developer</Badge>
@@ -20,13 +35,12 @@ export default function HomeView() {
 									<Badge>Entrepreneur</Badge>
 								</div>
 								<p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-									Welcome to my portfolio website, where I showcase my work and
-									share my thoughts.
+									{homepage.hero.description}
 								</p>
 							</div>
 						</div>
 						<img
-							src="/placeholder.svg"
+							src={urlFor(homepage.hero.image).width(1240).height(900).url()}
 							width="550"
 							height="400"
 							alt="Hero"
@@ -39,70 +53,12 @@ export default function HomeView() {
 				<div className="container mx-auto px-4 md:px-6">
 					<div className="space-y-4">
 						<h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-							Latest Blog Posts
+							{homepage.latestPostsTitle}
 						</h2>
 						<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-							<Card>
-								<CardContent className="p-4">
-									<h3 className="text-lg font-semibold">
-										Mastering React Hooks: A Comprehensive Guide
-									</h3>
-									<p className="text-muted-foreground">
-										Dive deep into the power of React Hooks and learn how to
-										leverage them to build more efficient and maintainable
-										applications.
-									</p>
-									<div className="mt-4">
-										<Link
-											href="#"
-											className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-											prefetch={false}
-										>
-											Read More
-										</Link>
-									</div>
-								</CardContent>
-							</Card>
-							<Card>
-								<CardContent className="p-4">
-									<h3 className="text-lg font-semibold">
-										Optimizing Website Performance: Best Practices
-									</h3>
-									<p className="text-muted-foreground">
-										Learn how to improve the speed and responsiveness of your
-										website through various optimization techniques.
-									</p>
-									<div className="mt-4">
-										<Link
-											href="#"
-											className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-											prefetch={false}
-										>
-											Read More
-										</Link>
-									</div>
-								</CardContent>
-							</Card>
-							<Card>
-								<CardContent className="p-4">
-									<h3 className="text-lg font-semibold">
-										Designing Accessible User Interfaces
-									</h3>
-									<p className="text-muted-foreground">
-										Explore the principles of accessible design and learn how to
-										create user interfaces that are inclusive and user-friendly.
-									</p>
-									<div className="mt-4">
-										<Link
-											href="#"
-											className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-											prefetch={false}
-										>
-											Read More
-										</Link>
-									</div>
-								</CardContent>
-							</Card>
+							{homepage.latestPosts.map((post) => (
+								<PostCard key={post._id} post={post} />
+							))}
 						</div>
 						<div className="flex justify-center">
 							<Link href="/posts">View All Posts</Link>

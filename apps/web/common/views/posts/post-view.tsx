@@ -5,6 +5,8 @@ import { Badge } from "@common/components/ui/badge";
 import type { Post } from "@common/types/post.types";
 import { Avatar, AvatarFallback, AvatarImage } from "@components/ui/avatar";
 import { urlFor } from "../../../sanity/lib/image";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 export default function PostView({
 	body,
@@ -15,6 +17,12 @@ export default function PostView({
 }: Post) {
 	return (
 		<div className="flex flex-col gap-5 max-w-[880px] mx-auto px-8 py-10">
+			<div>
+				<Link href={"/"} className="flex items-center gap-2">
+					<ArrowLeft />
+					Home
+				</Link>
+			</div>
 			<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
 				{title}
 			</h1>

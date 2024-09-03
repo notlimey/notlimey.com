@@ -9,8 +9,8 @@ export default function PortableText({ value }: { value: SanityBlockContent }) {
 			value={value}
 			components={{
 				types: {
-					codeBlock: ({ value }: { value: CodeBlockType }) => {
-						return <CodeBlock value={value.code} language={value.language} />;
+					code: ({ value }: { value: CodeBlockType }) => {
+						return <CodeBlock {...value} />;
 					},
 				},
 			}}

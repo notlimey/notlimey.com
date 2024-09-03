@@ -1,4 +1,4 @@
-import { defineType, defineArrayMember } from 'sanity'
+import { defineType, defineArrayMember, defineField } from 'sanity'
 import { ImageIcon } from '@sanity/icons'
 
 /**
@@ -73,25 +73,13 @@ export const blockContentType = defineType({
         }
       ]
     }),
-    defineArrayMember({
-      type: "object",
-      name: "codeBlock",
-      title: "Code Block",
-      fields: [
-        {
-          name: "code",
-          title: "Code",
-          type: "text",
-        },
-        {
-          name: "language",
-          title: "Language",
-          type: "string",
-          options: {
-            list: ["typescript", "javascript", "html", "css", "json", "markdown", "tsx", "bash"],
-          }
-        },
-      ],
-    }),
+    defineField({
+      type: 'code',
+      name: 'code',
+      title: 'Code',
+      options: {
+        language: 'javascript',
+      }
+    })
   ],
 })

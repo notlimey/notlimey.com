@@ -22,7 +22,6 @@ export const generateMetadata = async ({
 		twitter: {
 			images: post.mainImage ? [urlFor(post.mainImage).url()] : [],
 		},
-		authors: post.author ? [post.author] : [],
 	} satisfies Metadata;
 };
 

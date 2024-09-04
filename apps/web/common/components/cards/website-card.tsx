@@ -1,14 +1,17 @@
 "use client";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import type { Homepage } from "@common/types/homepage.types";
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "../ui/card";
 
 export default function PostCard({
 	website,
 }: {
-	website: {
-		url: string;
-		name: string;
-		description: string;
-	};
+	website: Homepage["otherWebsites"][number];
 }) {
 	return (
 		<a href={website.url} key={website.url} className="h-full">
@@ -21,6 +24,9 @@ export default function PostCard({
 						{website.description}
 					</p>
 				</CardContent>
+				<CardFooter>
+					<p className="text-muted-foreground text-sm">{website.myRelation}</p>
+				</CardFooter>
 			</Card>
 		</a>
 	);

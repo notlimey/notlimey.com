@@ -14,6 +14,7 @@ export type Homepage = {
         name: string;
         description: string;
         url: string;
+        myRelation: string;
     }[];
     latestPostsTitle: string;
 };

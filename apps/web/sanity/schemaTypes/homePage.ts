@@ -64,6 +64,11 @@ export const homePage = defineType({
                             title: "Description",
                             type: "text",
                         }),
+                        defineField({
+                            name: "myRelation",
+                            title: "My Relation",
+                            type: "string",
+                        }),
                     ],
                 }),
             ],
